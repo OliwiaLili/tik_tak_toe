@@ -9,14 +9,14 @@ public class tictactoe {
 
 
 		// Variablen Deklarieren
-		char f1, f2, f3 ,f4 ,f5 ,f6 ,f7 ,f8 ,f9;
-		int spieler;
-		boolean win;
+		char[] fields = new char [9];
+		int spieler = 1;
+		boolean win = false;
+		
+		for (int i = 0; i < fields.length; i++) {
+            fields[i] = (char)('1' + i); 
+        }
 
-		//Variablen initialisieren
-		f1 = f2 = f3 = f4 = f5 = f6 = f7 = f8 = f9 = '#';
-		spieler = 1;
-		win = false;
 
 		//Den "Scanner" erstellen (Das teil was die eingaben liest)
 		Scanner sc = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class tictactoe {
 		// Startet das Spiel
 		while(win == false){
 			//Spielfeld ausgeben
-			SpielfeldAusgeben(f1, f2, f3, f4, f5, f6, f7, f8, f9);
+			SpielfeldAusgeben(fields [0], fields [1], fields [2], fields [3], fields [4], fields [5], fields [6], fields [7], fields [8]);
 
 			if (spieler == 1){ // wenn spieler 1 dran ist
 				System.out.println("Spieler 1 ist an der reihe.");
@@ -32,130 +32,75 @@ public class tictactoe {
 				int eingabe = sc.nextInt(); //schaltet den Scanner für die nächste eingabe ein
 				System.out.println("Sie habe Position " + eingabe + " gewählt!");
 
-				//prüfen welches feld gewählt wurde
-				//gewählte feld ändern
+				if (eingabe < 10 & eingabe > 0) {
 
-				switch (eingabe){
-				case 1:
-					f1 = 'X';
-					break;
+					int i = 0;
+					i = eingabe - 1;
 
-				case 2:
-					f2 = 'X';
-					break;
+					if(fields[i] != 'X' | fields[i] != 'O') {
 
-				case 3:
-					f3 = 'X';
-					break;
+						fields[i] = 'O';
+					} else
+						System.out.println("Dieses Feld ist bereits belegt!");
 
-				case 4:
-					f4 = 'X';
-					break;
-
-				case 5:
-					f5='X';
-					break;
-
-				case 6:
-					f6 ='X';
-					break;
-
-				case 7:
-					f7 = 'X';
-					break;
-
-				case 8:
-					f8 ='X';
-					break;
-
-				case 9:
-					f9 ='X';
-					break;
-				}
+				} else
+					System.out.println("Eingabewert falsch");
 			} else if (spieler == 2){   // Wenn Spieler 2 an der reihe ist
 				System.out.println("Spieler 2 ist an der reihe.");
 				System.out.println("Wo möchten Sie setzen");
 				int eingabe = sc.nextInt(); //schaltet den Scanner für die nächste eingabe ein
 				System.out.println("Sie habe Position " + eingabe + " gewählt!");
 
-				//prüfen welches feld gewählt wurde
-				//gewählte feld ändern
-
-				switch (eingabe){
-				case 1:
-					f1 = 'O';
-					break;
-
-				case 2:
-					f2 = 'O';
-					break;
-
-				case 3:
-					f3 = 'O';
-					break;
-
-				case 4:
-					f4 = 'O';
-					break;
-
-				case 5:
-					f5='O';
-					break;
-
-				case 6:
-					f6 ='O';
-					break;
-
-				case 7:
-					f7 = 'O';
-					break;
-
-				case 8:
-					f8 ='O';
-					break;
-
-				case 9:
-					f9 ='O';
-					break;
-				}
-			} else {
-				System.out.println("Irgendwas mit der Spielerzählung hat nicht geklappt");
-				win = true;
+				
+				if (eingabe < 10 & eingabe > 0) {
+					
+					int i = 0;
+					i = eingabe - 1;
+					
+					if(fields[i] != 'X' | fields[i] != 'O') {
+						
+						fields[i] = 'X';
+					} else
+						System.out.println("Dieses Feld ist bereits belegt!");
+					
+				} else
+					System.out.println("Eingabewert falsch");
 			}
 
+			
 			// Überprüfung wurde gewonnen
-			if (f1 == f2 && f1 == f3 && f1 != '#'){
+			if (fields [0] == fields [1] && fields [1] == fields [2]){
 				win = true;
-			} else if (f4 == f5 && f4 == f6 && f4 != '#') {
+			} else if (fields [3] == fields [4] && fields [4] == fields [5]) {
 				win = true;
-			} else if (f7 == f8 && f7 == f9 && f7 != '#') {
+			} else if (fields [6] == fields [7] && fields [7] == fields [8]) {
 				win = true;
-			} else if (f1 == f4 && f1 == f7 && f1 != '#') {
+			} else if (fields [0] == fields [3] && fields [3] == fields [6]) {
 				win = true;
-			} else if (f2 == f5 && f2 == f8 && f2 != '#') {
+			} else if (fields [1] == fields [4] && fields [4] == fields [7]) {
 				win = true;
-			} else if (f3 == f6 && f3 == f9 && f3 != '#') {
+			} else if (fields [2] == fields [5] && fields [5] == fields [8]) {
 				win = true;
-			} else if (f1 == f5 && f1 == f9 && f1 != '#') {
+			} else if (fields [0] == fields [4] && fields [4] == fields [8]) {
 				win = true;
-			} else if (f3 == f5 && f3 == f7 && f3 != '#') {
+			} else if (fields [2] == fields [4] && fields [4] == fields [6]) {
 				win = true;
 			} else {
 			}
 
 			//Ausgabe wenn gewonnen wurde
 			if(win == true){
-				SpielfeldAusgeben(f1, f2, f3, f4, f5, f6, f7, f8, f9);
+				SpielfeldAusgeben(fields [0], fields [1], fields [2], fields [3], fields [4], fields [5], fields [6], fields [7], fields [8]);
 				System.out.println("Spieler " + spieler + " hat gewonnen");
 			}
-
+			
+			
 			//Spieler wechseln
 			if (spieler == 1){
-				spieler++;
+				spieler = 2;
 			} else {
-				spieler--;
+				spieler = 1;
 			}
-
 
 		}
 
@@ -169,7 +114,7 @@ public class tictactoe {
 		System.out.println("----------");
 		System.out.println(f4 + " | " + f5 + " | " + f6);
 		System.out.println("----------");
-		System.out.println(f1 + " | " + f2 + " | " + f3);
+		System.out.println(f1 + " | " + f2 + " | " + f3);
 	
 	}
 
