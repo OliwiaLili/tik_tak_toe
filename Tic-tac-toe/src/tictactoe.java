@@ -59,51 +59,6 @@ public class tictactoe {
 				}
             	
             }
-			
-			/*
-			if (spieler == 1){ // wenn spieler 1 dran ist
-				System.out.println("Spieler 1 ist an der Reihe.");
-				System.out.println("Wo möchtest du setzen?");
-				int eingabe = sc.nextInt(); //schaltet den Scanner für die nächste eingabe ein
-				System.out.println("Du hast Position " + eingabe + " gewählt!");
-
-				if (eingabe < 10 & eingabe > 0) {
-
-					int i = (eingabe - 1) / 3;
-					int j = (eingabe -1) % 3;
-					
-					if(fields[i][j] != 'X' | fields[i][j] != 'O') {
-
-						fields[i][j] = 'O';
-					} else
-						System.out.println("Dieses Feld ist bereits belegt!");
-
-				} else
-					System.out.println("Ungültige Eingabe");
-				
-				
-			} else if (spieler == 2){   // Wenn Spieler 2 an der reihe ist
-				System.out.println("Spieler 2 ist an der reihe.");
-				System.out.println("Wo möchtest du setzen?");
-				int eingabe = sc.nextInt(); //schaltet den Scanner für die nächste eingabe ein
-				System.out.println("Du hast Position " + eingabe + " gewählt!");
-
-				
-				if (eingabe < 10 & eingabe > 0) {
-					
-					int i = (eingabe - 1) / 3;
-					int j = (eingabe -1) % 3;
-					
-					if(fields[i][j] != 'X' | fields[i][j] != 'O') {
-
-						fields[i][j] = 'X';
-					} else
-						System.out.println("Dieses Feld ist bereits belegt!");
-					
-				} else
-					System.out.println("Eingabewert falsch");
-			}
-			*/
 
 			
 			// Überprüfung Reihen und Diagonalen
