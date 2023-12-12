@@ -33,9 +33,9 @@ public class tictactoe {
 			SpielfeldAusgeben(fields [0][0], fields [0][1], fields [0][2], fields [1][0], fields [1][1], fields [1][2], fields [2][0], fields [2][1], fields [2][2]);
 
 			if(spieler == 1) {
-				System.out.println("Spieler 1 ist an der Reihe");
+				System.out.println("Spieler 1 (O) ist an der Reihe");
 			} else {
-				System.out.println("Spieler 2 ist an der Reihe");
+				System.out.println("Spieler 2 (X) ist an der Reihe");
 			}
 			
 			System.out.println("Wo möchtest du setzen?");
@@ -74,7 +74,6 @@ public class tictactoe {
 			if((fields[0][0] == fields[1][1] & fields[1][1] == fields[2][2]) ||
 			(fields[0][2] == fields[1][1] & fields[1][1] == fields[2][0])) {
 				win = true;
-				break;
 			}
 			
 			
@@ -91,9 +90,9 @@ public class tictactoe {
 					}	
 				} 
 				
-				if (!draw) {
-					break;
-				}
+				//if (!draw) {
+				//	break;
+				//}
 			} 
 
 			//Ausgabe wenn gewonnen wurde
@@ -127,6 +126,7 @@ public class tictactoe {
 		System.out.println(f4 + " | " + f5 + " | " + f6);
 		System.out.println("----------");
 		System.out.println(f1 + " | " + f2 + " | " + f3);
+		System.out.println("");
 	
 	}
 
