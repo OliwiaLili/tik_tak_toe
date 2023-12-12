@@ -23,14 +23,13 @@ public class tictactoe {
 			}
         }
 
-
 		//Den "Scanner" erstellen (Das teil was die eingaben liest)
 		Scanner sc = new Scanner(System.in);
 
 		// Startet das Spiel
 		while(!win && !draw){
 			//Spielfeld ausgeben
-			SpielfeldAusgeben(fields [0][0], fields [0][1], fields [0][2], fields [1][0], fields [1][1], fields [1][2], fields [2][0], fields [2][1], fields [2][2]);
+			SpielfeldAusgeben(fields);
 
 			if(spieler == 1) {
 				System.out.println("Spieler 1 (O) ist an der Reihe");
@@ -96,12 +95,11 @@ public class tictactoe {
 			} 
 
 			//Ausgabe wenn gewonnen wurde
-			//eltl noch mit for schleife vereinfachen
 			if(win == true){
-				SpielfeldAusgeben(fields [0][0], fields [0][1], fields [0][2], fields [1][0], fields [1][1], fields [1][2], fields [2][0], fields [2][1], fields [2][2]);
+				SpielfeldAusgeben(fields);
 				System.out.println("Spieler " + spieler + " hat gewonnen");
 			} else if(draw == true) {
-				SpielfeldAusgeben(fields [0][0], fields [0][1], fields [0][2], fields [1][0], fields [1][1], fields [1][2], fields [2][0], fields [2][1], fields [2][2]);
+				SpielfeldAusgeben(fields);
 				System.out.println("Das Spiel ist unentschieden!");
 			}
 			
@@ -116,20 +114,15 @@ public class tictactoe {
 		}
 	}
 
-
-
-
-	public static void SpielfeldAusgeben(char f1, char f2, char f3 , char f4 , char f5 , char f6 , char f7 ,char f8 ,char f9){
+	public static void SpielfeldAusgeben(char[][] arr){
 		//Spielfeld ausgeben.
-		System.out.println(f7 + " | " + f8 + " | " + f9);
+		System.out.println(arr[2][0] + " | " + arr[2][1] + " | " + arr[2][2]);
 		System.out.println("----------");
-		System.out.println(f4 + " | " + f5 + " | " + f6);
+		System.out.println(arr[1][0] + " | " + arr[1][1] + " | " + arr[1][2]);
 		System.out.println("----------");
-		System.out.println(f1 + " | " + f2 + " | " + f3);
+		System.out.println(arr[0][0] + " | " + arr[0][1] + " | " + arr[0][2]);
 		System.out.println("");
 	
 	}
 
-
 }
-
