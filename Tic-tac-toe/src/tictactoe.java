@@ -5,16 +5,22 @@ import java.util.Scanner; // importiert die Klasse Scanner
 public class tictactoe {
 
 	public static void main(String[] args) {
-		
 
 
 		// Variablen Deklarieren
-		char[] fields = new char [9];
+		char[][] fields = new char [3][3];
 		int spieler = 1;
 		boolean win = false;
+		boolean draw = false;
 		
-		for (int i = 0; i < fields.length; i++) {
-            fields[i] = (char)('1' + i); 
+		int zahl = 1;
+		for (int i = 0; i < 3; i++) {
+			
+			for(int j = 0; j<3; j++) {
+				//Warum die 0?
+				fields[i][j] = (char) (zahl + '0');
+				zahl++;
+			}
         }
 
 
@@ -22,76 +28,127 @@ public class tictactoe {
 		Scanner sc = new Scanner(System.in);
 
 		// Startet das Spiel
-		while(win == false){
+		while(!win && !draw){
 			//Spielfeld ausgeben
-			SpielfeldAusgeben(fields [0], fields [1], fields [2], fields [3], fields [4], fields [5], fields [6], fields [7], fields [8]);
+			SpielfeldAusgeben(fields [0][0], fields [0][1], fields [0][2], fields [1][0], fields [1][1], fields [1][2], fields [2][0], fields [2][1], fields [2][2]);
 
+			if(spieler == 1) {
+				System.out.println("Spieler 1 ist an der Reihe");
+			} else {
+				System.out.println("Spieler 2 ist an der Reihe");
+			}
+			
+			System.out.println("Wo möchtest du setzen?");
+            int eingabe = sc.nextInt();
+            
+            if (eingabe < 10 & eingabe > 0) {
+            	
+            	int i = (eingabe - 1) / 3;
+				int j = (eingabe -1) % 3;
+				
+				if (fields[i][j] != 'X' && fields[i][j] != 'O') {
+					
+					if (spieler == 1) {
+                        fields[i][j] = 'O';
+                    } else {
+                        fields[i][j] = 'X';
+                    }
+				} else {
+					System.out.println("Dieses Feld ist bereits belegt!");
+					continue;
+				}
+            	
+            }
+			
+			/*
 			if (spieler == 1){ // wenn spieler 1 dran ist
-				System.out.println("Spieler 1 ist an der reihe.");
-				System.out.println("Wo möchten Sie setzen");
+				System.out.println("Spieler 1 ist an der Reihe.");
+				System.out.println("Wo möchtest du setzen?");
 				int eingabe = sc.nextInt(); //schaltet den Scanner für die nächste eingabe ein
-				System.out.println("Sie habe Position " + eingabe + " gewählt!");
+				System.out.println("Du hast Position " + eingabe + " gewählt!");
 
 				if (eingabe < 10 & eingabe > 0) {
 
-					int i = 0;
-					i = eingabe - 1;
+					int i = (eingabe - 1) / 3;
+					int j = (eingabe -1) % 3;
+					
+					if(fields[i][j] != 'X' | fields[i][j] != 'O') {
 
-					if(fields[i] != 'X' | fields[i] != 'O') {
-
-						fields[i] = 'O';
+						fields[i][j] = 'O';
 					} else
 						System.out.println("Dieses Feld ist bereits belegt!");
 
 				} else
-					System.out.println("Eingabewert falsch");
+					System.out.println("Ungültige Eingabe");
+				
+				
 			} else if (spieler == 2){   // Wenn Spieler 2 an der reihe ist
 				System.out.println("Spieler 2 ist an der reihe.");
-				System.out.println("Wo möchten Sie setzen");
+				System.out.println("Wo möchtest du setzen?");
 				int eingabe = sc.nextInt(); //schaltet den Scanner für die nächste eingabe ein
-				System.out.println("Sie habe Position " + eingabe + " gewählt!");
+				System.out.println("Du hast Position " + eingabe + " gewählt!");
 
 				
 				if (eingabe < 10 & eingabe > 0) {
 					
-					int i = 0;
-					i = eingabe - 1;
+					int i = (eingabe - 1) / 3;
+					int j = (eingabe -1) % 3;
 					
-					if(fields[i] != 'X' | fields[i] != 'O') {
-						
-						fields[i] = 'X';
+					if(fields[i][j] != 'X' | fields[i][j] != 'O') {
+
+						fields[i][j] = 'X';
 					} else
 						System.out.println("Dieses Feld ist bereits belegt!");
 					
 				} else
 					System.out.println("Eingabewert falsch");
 			}
+			*/
 
 			
-			// Überprüfung wurde gewonnen
-			if (fields [0] == fields [1] && fields [1] == fields [2]){
-				win = true;
-			} else if (fields [3] == fields [4] && fields [4] == fields [5]) {
-				win = true;
-			} else if (fields [6] == fields [7] && fields [7] == fields [8]) {
-				win = true;
-			} else if (fields [0] == fields [3] && fields [3] == fields [6]) {
-				win = true;
-			} else if (fields [1] == fields [4] && fields [4] == fields [7]) {
-				win = true;
-			} else if (fields [2] == fields [5] && fields [5] == fields [8]) {
-				win = true;
-			} else if (fields [0] == fields [4] && fields [4] == fields [8]) {
-				win = true;
-			} else if (fields [2] == fields [4] && fields [4] == fields [6]) {
-				win = true;
-			} else {
+			// Überprüfung Reihen und Diagonalen
+			for( int i = 0; i<3; i++) {
+				if((fields[i][0] == fields[i][1] & fields[i][1] == fields[i][2]) ||
+				(fields[0][i] == fields[1][i] & fields[1][i] == fields[2][i])) {
+					win = true;
+					break;
+				}
 			}
+			
+			//Überprüfung Spalten
+			if((fields[0][0] == fields[1][1] & fields[1][1] == fields[2][2]) ||
+			(fields[0][2] == fields[1][1] & fields[1][1] == fields[2][0])) {
+				win = true;
+				break;
+			}
+			
+			
+			//Überprüfung ob unentschieden
+			draw = true; // Annahme: Es ist unentschieden, bis ein leeres Feld gefunden wird
+			for(int i = 0; i<3; i++) {
+				
+				for(int j = 0; j<3; j++) {
+					
+					if(fields[i][j] != 'X' && fields[i][j] != 'O') {
+						
+						draw = false;
+						break;
+					}	
+				} 
+				
+				if (!draw) {
+					break;
+				}
+			} 
 
 			//Ausgabe wenn gewonnen wurde
+			//eltl noch mit for schleife vereinfachen
 			if(win == true){
-				SpielfeldAusgeben(fields [0], fields [1], fields [2], fields [3], fields [4], fields [5], fields [6], fields [7], fields [8]);
+				SpielfeldAusgeben(fields [0][0], fields [0][1], fields [0][2], fields [1][0], fields [1][1], fields [1][2], fields [2][0], fields [2][1], fields [2][2]);
 				System.out.println("Spieler " + spieler + " hat gewonnen");
+			} else if(draw == true) {
+				SpielfeldAusgeben(fields [0][0], fields [0][1], fields [0][2], fields [1][0], fields [1][1], fields [1][2], fields [2][0], fields [2][1], fields [2][2]);
+				System.out.println("Das Spiel ist unentschieden!");
 			}
 			
 			
@@ -103,8 +160,8 @@ public class tictactoe {
 			}
 
 		}
-
 	}
+
 
 
 
