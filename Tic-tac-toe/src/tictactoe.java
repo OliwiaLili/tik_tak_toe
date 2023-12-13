@@ -18,7 +18,6 @@ public class tictactoe {
 		for (int i = 0; i < 3; i++) {
 
 			for(int j = 0; j<3; j++) {
-				//Warum die 0?
 				fields[i][j] = (char) (zahl + '0');
 				zahl++;
 			}
@@ -63,6 +62,9 @@ public class tictactoe {
 						continue;
 					}
 
+				} else {
+					System.out.println("Ungültiger Wert! Bitte eine Zahl zwischen 1 und 9 eingeben.");
+					continue;
 				}
 			}
 			//bei der Eingabe eines nicht-numerischen Wertes wird eine Fehlermeldung ausgegeben und die Eingabe wird verworfen
