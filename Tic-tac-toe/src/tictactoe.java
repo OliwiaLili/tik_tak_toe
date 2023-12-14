@@ -22,7 +22,7 @@ public class tictactoe {
 				zahl++;
 			}
         }
-
+//test Oliwia
 
 		//Den "Scanner" erstellen (Das teil was die eingaben liest)
 		Scanner sc = new Scanner(System.in);
