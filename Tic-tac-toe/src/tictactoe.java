@@ -159,7 +159,7 @@ public class tictactoe {
     // Computer Spieler (X) macht einen Zug
     public static void computerZug(String[][] arr) {
         int[] bestMove = minimax(arr, "X");
-        arr[bestMove[0]][bestMove[1]] = "X"; // hier kommt die Endlose Schleife
+        arr[bestMove[0]][bestMove[1]] = "X"; // ACHTUNG !!! hier kommt die Endlose Schleife
     }
 
     // Minimax-Algorithmus für die Berechnung des besten Zugs
