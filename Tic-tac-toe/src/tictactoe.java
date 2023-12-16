@@ -113,8 +113,8 @@ public class tictactoe {
 				} 
 
 			} 
-
-			//Ausgabe, wenn gewonnen wurde oder das Spiel unentschieden ist
+ 
+			//Ausgabe,wenn gewonnen wurde oder das Spiel unentschieden ist
 			if(win == true){
 				SpielfeldAusgeben(fields);
 				System.out.println("Spieler " + spieler + " hat gewonnen");
