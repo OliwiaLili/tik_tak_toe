@@ -24,6 +24,7 @@ public class tictactoe {
 	public static void main(String[] args) {
 
 		int modus=0;
+		boolean we = true;
 
 		//erstellen von Spielfeld
 		int zahl = 1;
@@ -38,8 +39,7 @@ public class tictactoe {
 
 		System.out.println("Wollen Sie 2-Player-Modus(1) oder gegen Computer(2) spielen?");
 		
-		boolean we = true;
-		
+		//Prüfen ob Eingabe vom "modus" richtig ist
  		while(we)
 		{
 			try
@@ -64,59 +64,10 @@ public class tictactoe {
 				//continue;
 				
 			}
+		
 
-
-			//Überprüfung, ob jemand gewonnen hat
-			// Überprüfung Reihen und Spalten
-			for( int i = 0; i<3; i++) {
-				if((fields[i][0] == fields[i][1] & fields[i][1] == fields[i][2]) ||
-						(fields[0][i] == fields[1][i] & fields[1][i] == fields[2][i])) {
-					win = true;
-					break;
-				}
-			}
-
-			//Überprüfung Diagonalen
-			if((fields[0][0] == fields[1][1] & fields[1][1] == fields[2][2]) ||
-					(fields[0][2] == fields[1][1] & fields[1][1] == fields[2][0])) {
-				win = true;
-			}
-
-
-			//Überprüfung ob unentschieden
-			draw = true; // Annahme: Es ist unentschieden, bis ein leeres Feld gefunden wird
-			for(int i = 0; i<3; i++) {
-
-				for(int j = 0; j<3; j++) {
-
-					if(fields[i][j] != xT && fields[i][j] != oT) {
-
-						draw = false;
-						break;
-					}	
-				} 
-
-			} 
- 
-			//Ausgabe,wenn gewonnen wurde oder das Spiel unentschieden ist
-			if(win == true){
-				SpielfeldAusgeben(fields);
-				System.out.println("Spieler " + spieler + " hat gewonnen");
-			} else if(draw == true) {
-				SpielfeldAusgeben(fields);
-				System.out.println("Das Spiel ist unentschieden!");
-			}
-
-
-			//Spieler wechseln
-			if (spieler == 1){
-				spieler = 2;
-			} else {
-				spieler = 1;
-			}
-
-
-		}
+			
+	}
 
 			
 			
@@ -328,6 +279,7 @@ public class tictactoe {
 				if(fields[i][j] != xT && fields[i][j] != oT ) {
 					
 					draw = false;
+					break;
 					
 				}	
 				
