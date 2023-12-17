@@ -71,7 +71,7 @@ public class tictactoe {
 
 			
 			
-			
+			//2 Player Modus wird gespielt
 			if(modus==1)
 			{
 				//Ausgabe, welcher Spieler an der Reihe ist
@@ -95,7 +95,7 @@ public class tictactoe {
 						
 						try
 						{
-							
+							//Eingabe User
 							eingabe = sc.nextInt();
 							
 							//bei korrekter Eingabe wird durch Division und Modulo die richtige Position im Array ausgewählt
@@ -138,7 +138,7 @@ public class tictactoe {
 						}
 						
 						
-						
+						//Geprüft ob auf dem Spielfeld unenschieden oder "win" ist
 						pruefeSpielstandWinOrDraw(fields);
 						
 					}
@@ -147,6 +147,7 @@ public class tictactoe {
 				} 
 				
 			}
+			//Spiel wird gegen Computer gestartet
 			else if(modus==2)
 			{
 				
@@ -244,7 +245,7 @@ public class tictactoe {
 	}
 	
 	
-	
+	//Methode um azf "draw" und "win" zu prüfen
 	public static void pruefeSpielstandWinOrDraw(String[][] fields)
 	{
 		
