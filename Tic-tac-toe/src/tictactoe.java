@@ -75,7 +75,7 @@ public class tictactoe {
 			if(modus==1)
 			{
 				//Ausgabe, welcher Spieler an der Reihe ist
-				if(spieler == 1) {
+				
 					
 					while(!win && !draw)
 					{
@@ -118,7 +118,7 @@ public class tictactoe {
 									//Fehlermeldung, falls das Feld bereits belegt ist
 								} else {
 									System.out.println("Dieses Feld ist bereits belegt!");
-									
+									continue;
 									
 								}
 				
@@ -144,7 +144,10 @@ public class tictactoe {
 					}
 					
 						
-				} 
+				
+				
+				
+				
 				
 			}
 			//Spiel wird gegen Computer gestartet
